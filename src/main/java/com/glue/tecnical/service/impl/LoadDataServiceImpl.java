@@ -9,9 +9,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.springframework.stereotype.Service;
+
 import com.glue.tecnical.model.Product;
 import com.glue.tecnical.service.LoadDataService;
 
+@Service
 public class LoadDataServiceImpl implements LoadDataService {
 
 	private static final String DELIMITER = ";";
