@@ -6,14 +6,14 @@ public class Product {
 
 	private Long id;
 	private String name;
-	private String salesUnits;
+	private Integer salesUnits;
 	private Map<String, Integer> stocks;
 
 	public Product() {
 		super();
 	}
 
-	public Product(Long id, String name, String salesUnits, Map<String, Integer> stocks) {
+	public Product(Long id, String name, Integer salesUnits, Map<String, Integer> stocks) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -37,11 +37,11 @@ public class Product {
 		this.name = name;
 	}
 
-	public String getSalesUnits() {
+	public Integer getSalesUnits() {
 		return salesUnits;
 	}
 
-	public void setSalesUnits(String salesUnits) {
+	public void setSalesUnits(Integer salesUnits) {
 		this.salesUnits = salesUnits;
 	}
 
