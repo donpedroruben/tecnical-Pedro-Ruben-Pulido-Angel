@@ -1,13 +1,13 @@
 package com.glue.tecnical.service;
 
-import java.util.Map;
-
 import org.springframework.stereotype.Service;
+
+import com.glue.tecnical.dto.WeighDTO;
+import com.glue.tecnical.model.Product;
 
 @Service
 public interface WeighService {
 
-	public Double multiply(Double weigh, Integer integer);
+	public Double addAllWeights(Product product, WeighDTO weigh);
 
-	public Double addAllWeights(Map<Double, Integer> mapToAddAllWeights);
 }

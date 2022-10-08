@@ -9,5 +9,7 @@ import com.glue.tecnical.model.Product;
 
 @Service
 public interface OrderService {
+
 	public List<Product> orderList(List<Product> listProducts, WeighDTO weigh);
+
 }

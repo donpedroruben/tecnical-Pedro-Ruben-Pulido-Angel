@@ -1,50 +1,41 @@
 package com.glue.tecnical.service.impl;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
 
-import com.glue.tecnical.service.WeighService;
+import com.glue.tecnical.dto.WeighDTO;
+import com.glue.tecnical.model.Product;
 
 public class WeighServiceImplTest {
 
-	private WeighService weighService;
+	@InjectMocks
+	private WeighServiceImpl weighServiceImpl;
 
-	@Test
-	public void multiplyTest1() {
-		Double weigh = 10.0;
-		Integer integer = 2;
-		Double result = weighService.multiply(weigh, integer);
-
-		assertNotNull(result);
-		assertTrue(result == 20);
-	};
-
-	@Test
-	public void multiplyTest2() {
-		Double weigh = 0.5;
-		Integer integer = 10;
-		Double result = weighService.multiply(weigh, integer);
-
-		assertNotNull(result);
-		assertTrue(result == 5);
-	};
+	@Before
+	public void setup() {
+		MockitoAnnotations.initMocks(this);
+	}
 
 	@Test
 	public void addAllWeights() {
-		Map<Double, Integer> mapToAddAllWeights = new HashMap<Double, Integer>();
-		mapToAddAllWeights.put(100.0, 20);
-		mapToAddAllWeights.put(80.0, 2);
-		mapToAddAllWeights.put(80.0, 5);
-		mapToAddAllWeights.put(80.0, 10);
+		WeighDTO weigh = new WeighDTO(80, 20);
 
-		Double result = weighService.addAllWeights(mapToAddAllWeights);
+		Map<String, Integer> stocks1 = new HashMap<String, Integer>();
+		stocks1.put("S", 2);
+		stocks1.put("M", 5);
+		stocks1.put("L", 10);
+		Product product1 = new Product(1L, "Test 1", 200, stocks1, null);
 
-		assertTrue(result == 3360);
+		Double result = weighServiceImpl.addAllWeights(product1, weigh);
+
+		assertTrue(result == 16340);
 	}
 
 }

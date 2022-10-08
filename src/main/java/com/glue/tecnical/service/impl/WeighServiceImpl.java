@@ -1,19 +1,24 @@
 package com.glue.tecnical.service.impl;
 
-import java.util.Map;
+import java.util.Iterator;
 
+import com.glue.tecnical.dto.WeighDTO;
+import com.glue.tecnical.model.Product;
 import com.glue.tecnical.service.WeighService;
 
 public class WeighServiceImpl implements WeighService {
 
-	public Double multiply(Double weigh, Integer integer) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Double addAllWeights(Product product, WeighDTO weigh) {
+		Double result = weigh.getWeighSalesUnits() * product.getSalesUnits();
 
-	public Double addAllWeights(Map<Double, Integer> mapToAddAllWeights) {
-		// TODO Auto-generated method stub
-		return null;
+		Iterator<String> iterator = product.getStocks().keySet().iterator();
+		while (iterator.hasNext()) {
+			String key = iterator.next();
+			Integer value = product.getStocks().get(key);
+			result += value * weigh.getWeighStocks();
+		}
+
+		return result;
 	}
 
 }
